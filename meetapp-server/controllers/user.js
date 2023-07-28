@@ -4,6 +4,50 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const asyncHandler = require('express-async-handler');
 
+// Login route;
+const login = asyncHandler(async(req, res) => {
+    let errors = []
+    try {
+        const {email, password} = req.body;
+        // Check fields
+        if (!email || !password) {
+            errors.push("Please fill in all fields");
+            return res.status(200).json({ message: errors, success: false });
+        } else {
+            const user = User.findOne({email: email});
+            if (user) {
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if (err) {
+                        errors.push("Internal Server Error");
+                        return res.status(200).json({ message: errors, success: false });
+                    } else {
+                        if (isMatch) {
+                            const payload = {id: user._id, name: user.name};
+                            jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, (err, token) => {
+                                res.status(200).json({
+                                    message: "Signed In",
+                                    user: payload,
+                                    token,
+                                    success: true
+                                });
+                            });
+                        } else {
+                            errors.push("Wrong password");
+                            res.status(200).json({message: errors, success: false});
+                        }
+                    }
+                });
+            } else {
+                errors.push("User not found");
+                return res.status(200).json({ message: errors, success: false });
+            }
+        }
+    } catch (err) {
+        errors.push("Internal Server Error");
+        return res.status(200).json({ message: errors, success: false });
+    }
+});
+
 // Signup route;
 const signup = asyncHandler(async(req, res) => {
     let errors = []
@@ -59,4 +103,4 @@ const signup = asyncHandler(async(req, res) => {
     }
 });
 
-module.exports = {signup};
+module.exports = {signup, login};
