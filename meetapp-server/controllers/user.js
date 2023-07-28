@@ -14,10 +14,11 @@ const login = asyncHandler(async(req, res) => {
             errors.push("Please fill in all fields");
             return res.status(200).json({ message: errors, success: false });
         } else {
-            const user = User.findOne({email: email});
+            let user = await User.findOne({email: email});
             if (user) {
-                bcrypt.compare(password, user.password, (err, isMatch) => {
+                 bcrypt.compare(password, user.password, (err, isMatch) => {
                     if (err) {
+                        console.log(err);
                         errors.push("Internal Server Error");
                         return res.status(200).json({ message: errors, success: false });
                     } else {
@@ -43,7 +44,7 @@ const login = asyncHandler(async(req, res) => {
             }
         }
     } catch (err) {
-        errors.push("Internal Server Error");
+        errors.push("Internal Server Error222");
         return res.status(200).json({ message: errors, success: false });
     }
 });
