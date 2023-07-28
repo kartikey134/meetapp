@@ -12,6 +12,7 @@ const login = asyncHandler(async(req, res) => {
         // Check fields
         if (!email || !password) {
             errors.push("Please fill in all fields");
+            return res.status(200).json({ message: errors, success: false });
         } else {
             const user = User.findOne({email: email});
             if (user) {
