@@ -43,7 +43,7 @@ const getRooms = async(req, res) => {
                 path: "createdBy",
             },
         ]);
-        return res.status(200).json({message: "Room fetched", success: true});
+        return res.status(200).json({message: "Room fetched", rooms, success: true});
     } catch (err) {
         return res.status(500).json({message: "Internal Server Error", success: false});
     }

@@ -81,15 +81,15 @@ io.on('connection', (socket) => {
                 users[roomId] = users[roomId].filter(
                     (user) => user._id != socket.userId
                 );
-                console.log(users[roomId]);
+                // console.log("users[roomId] :: ", users[roomId]);
             }
 
             console.log(`${socket.userId} has left room ${roomId}`);
             
-            io.to(roomId).emit('participant-left'), {
+            io.to(roomId).emit('participant-left', {
                 userId: socket.userId,
                 participantsList: users[roomId],
-            };
+            });
 
             socket.leave(roomId);
         } catch(err) {
