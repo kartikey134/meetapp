@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+#navbar {
+  background-color: #1682db;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#navbar a {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+}
+
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.room-card {
+  background-color: lightblue;
+  padding: 10px;
+  height: 140px;
+  width: 260px;
+  margin: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  transition: all 0.2s;
+}
+
+.room {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar {
+  height: 68px;
+}
+
+.room-card {
+  margin: 1rem;
+}
+
+.participants-rating {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.participants-rating > div {
+  width: 260px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.participants-rating > div h2 {
+  margin-bottom: 10px;
+}
+
+.participants-container {
+  flex-grow: 1;
+}
+
+.participants-list > div {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.participants-list > div > .MuiAvatar-root {
+  height: 32px;
+  width: 32px;
+  font-size: 18px;
+}
+
+.participants-list > div > p {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.ratings-container {
+  height: 240px;
+}
+
+.ratings-container > div > form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ratings-container > div > form > label {
+  font-size: 28px;
+}
+
+.ratings-container > div > form > input {
+  border: none;
+  outline: none;
+}
+
+.current-sentiment {
+  font-size: 64px;
+  text-align: center;
+}
+
+.rate-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.messages-container {
+  margin: 10px 10px 10px 20px;
+  flex-grow: 1;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 8px;
+}
+
+.whiteboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whiteboard-main {
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.whiteboard-settings {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  width: 96%;
+  height: 100%;
+  border-radius: 8px;
+  font-size: 26px;
+  font-weight: 600;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.messages-container input[type="submit"] {
+  display: none;
+}
+
+.messages ul {
+  list-style: none;
+}
+
+.messages ul li {
+  padding: 8px;
+  width: 60%;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.messages ul li.sent {
+  background-color: #dcf8c6;
+  margin-left: auto;
+}
+
+.messages ul li.received {
+  background-color: #ece5de;
+}
+
+.messages ul li.hatespeech {
+  width: 70%;
+  background-color: rgba(240, 110, 110, 0.4);
+}
+
+.messages ul li p.message-user {
+  color: brown;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hatespeech-text {
+  font-size: 14px;
+  color: rgb(216, 15, 15);
+}
